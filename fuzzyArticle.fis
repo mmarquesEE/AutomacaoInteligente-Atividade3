@@ -1,0 +1,106 @@
+[System]
+Name='fuzzyController'
+Type='mamdani'
+Version=2.0
+NumInputs=6
+NumOutputs=2
+NumRules=20
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='eG'
+Range=[0 13]
+NumMFs=3
+MF1='N':'trimf',[-6.5 0 6.5]
+MF2='M':'trimf',[0 6.5 13]
+MF3='F':'trimf',[6.5 13 19.5]
+
+[Input2]
+Name='alphaG'
+Range=[-3.14159265358979 3.14159265358979]
+NumMFs=9
+MF1='NB':'trimf',[-4.189 -3.142 -2.094]
+MF2='NM':'trimf',[-3.142 -2.094 -1.047]
+MF3='NS':'trimf',[-2.094 -1.047 2.22e-16]
+MF4='ZE':'trimf',[-1.047 4.233e-16 1.047]
+MF5='PS':'trimf',[2.22e-16 1.047 2.094]
+MF6='PM':'trimf',[1.047 2.094 3.142]
+MF7='PB':'trimf',[2.094 3.142 4.189]
+MF8='N':'trapmf',[-6.28318530717959 -3.14159265358979 -1.0471975511966 0]
+MF9='P':'trapmf',[0 1.0471975511966 3.14159265358979 6.28318530717959]
+
+[Input3]
+Name='DF'
+Range=[0 1]
+NumMFs=4
+MF1='S':'trimf',[0 0 0.25]
+MF2='M':'trimf',[0 0.25 0.5]
+MF3='L':'trapmf',[0.25 0.5 0.75 1]
+MF4='O':'trapmf',[-1 0 0.75 1]
+
+[Input4]
+Name='DL'
+Range=[0 1]
+NumMFs=2
+MF1='O':'trapmf',[-1 0 0.75 1]
+MF2='S':'trimf',[0 0 0.25]
+
+[Input5]
+Name='DR'
+Range=[0 1]
+NumMFs=2
+MF1='O':'trapmf',[-1 0 0.75 1]
+MF2='S':'trimf',[0 0 0.25]
+
+[Input6]
+Name='DS'
+Range=[-1 1]
+NumMFs=2
+MF1='R':'trapmf',[-2 -1 -0.05 0.05]
+MF2='L':'trapmf',[-0.05 0.05 1 2]
+
+[Output1]
+Name='e'
+Range=[0 3]
+NumMFs=3
+MF1='S':'trimf',[-1.5 2.776e-17 1.5]
+MF2='M':'trimf',[0 1.5 3]
+MF3='B':'trimf',[1.5 3 4.5]
+
+[Output2]
+Name='alpha'
+Range=[-3.14159265358979 3.14159265358979]
+NumMFs=7
+MF1='RB':'trimf',[-4.189 -3.143 -2.095]
+MF2='RM':'trimf',[-3.143 -2.095 -1.047]
+MF3='RS':'trimf',[-2.095 -1.047 0]
+MF4='ZE':'trimf',[-1.047 8.882e-16 1.047]
+MF5='LS':'trimf',[0 1.047 2.095]
+MF6='LM':'trimf',[1.047 2.095 3.143]
+MF7='LB':'trimf',[2.095 3.143 4.189]
+
+[Rules]
+1 0 -4 0 0 0, 1 0 (1) : 1
+2 0 -4 0 0 0, 2 0 (1) : 1
+3 0 -4 0 0 0, 3 0 (1) : 1
+0 1 -4 0 -1 0, 0 1 (1) : 1
+0 2 -4 0 -1 0, 0 2 (1) : 1
+0 3 -4 0 -1 0, 0 3 (1) : 1
+0 4 -4 0 0 0, 0 4 (1) : 1
+0 5 -4 -1 0 0, 0 5 (1) : 1
+0 6 -4 -1 0 0, 0 6 (1) : 1
+0 7 -4 -1 0 0, 0 7 (1) : 1
+0 0 1 0 0 2, 1 1 (1) : 1
+0 0 2 0 0 2, 2 2 (1) : 1
+0 0 3 0 0 2, 3 3 (1) : 1
+0 0 1 0 0 1, 1 7 (1) : 1
+0 0 2 0 0 1, 2 6 (1) : 1
+0 0 3 0 0 1, 3 5 (1) : 1
+0 8 -4 0 1 0, 2 4 (1) : 1
+0 -8 -4 1 0 0, 2 4 (1) : 1
+0 0 -4 2 0 0, 2 3 (1) : 1
+0 0 -4 0 2 0, 2 5 (1) : 1
